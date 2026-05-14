@@ -139,6 +139,28 @@ img {
   display: block;
 }
 
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+}
+
+.scroll-hidden.scroll-transform-right {
+  transform: translateX(32px);
+}
+
+.scroll-hidden.scroll-transform-left {
+  transform: translateX(-32px);
+}
+
+.scroll-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
 /* ============================================
    Navigation
    ============================================ */

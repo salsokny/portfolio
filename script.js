@@ -3,7 +3,7 @@
  * Interactive behaviors and animations
  */
 
-document.addEventListener("DOMContentLoaded", () => {
+const runPortfolioScripts = () => {
   initMobileNav();
   initSmoothScroll();
   initSkillBars();
@@ -11,7 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavbarScroll();
   initProjectToggles();
   initThemeSwitcher();
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", runPortfolioScripts);
+} else {
+  runPortfolioScripts();
+}
 
 /**
  * Mobile navigation toggle
@@ -89,29 +95,48 @@ function initSkillBars() {
  */
 function initScrollAnimations() {
   const animateElements = document.querySelectorAll(
-    ".timeline-item, .skill-card, .course-card, .edu-item, .about-content, .project-card",
+    ".hero-content, .section, .section-title, .about-grid, .about-content, .about-image, .about-details, .about-hobbies, .timeline-item, .project-card, .project-card-body, .project-block, .skill-card, .course-card, .edu-item",
   );
 
+  if (!animateElements.length) return;
+
   const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -30px 0px",
+    threshold: 0.15,
+    rootMargin: "0px 0px -20px 0px",
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.classList.add("scroll-visible");
+        // If it's a timeline-item, animate its list items all at once
+        if (entry.target.classList.contains("timeline-item")) {
+          const listItems = entry.target.querySelectorAll(
+            ".timeline-content ul li",
+          );
+          listItems.forEach((li) => {
+            li.classList.add("scroll-visible");
+          });
+        }
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
   animateElements.forEach((el, i) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(20px)";
-    el.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
+    el.classList.add("scroll-hidden");
+    if (el.classList.contains("scroll-from-right")) {
+      el.classList.add("scroll-transform-right");
+    } else if (el.classList.contains("scroll-from-left")) {
+      el.classList.add("scroll-transform-left");
+    }
+    el.style.transitionDelay = `${(i * 0.05).toFixed(2)}s`;
     observer.observe(el);
+  });
+
+  // Initially hide timeline list items
+  document.querySelectorAll(".timeline-content ul li").forEach((li) => {
+    li.classList.add("scroll-hidden");
   });
 }
 

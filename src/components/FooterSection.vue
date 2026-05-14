@@ -1,15 +1,18 @@
 <template>
   <footer class="footer">
-    <p>© 2026 Sal Sokny. Built with Vue 3, TypeScript, Tailwind CSS, Arco Design, and native CSS.</p>
+    <p>
+      © 2026 Sal Sokny. Built with Vue 3, TypeScript, Tailwind CSS, Arco Design,
+      and native CSS.
+    </p>
   </footer>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'FooterSection',
-})
+  name: "FooterSection",
+});
 </script>
 
 <style scoped>
