@@ -15,18 +15,18 @@
           Tailwind CSS, and Arco Design.
         </p>
         <div class="hero-cta">
-          <a-button
-            type="primary"
-            class="rounded-md !p-6 !text-white !font-bold !bg-[#22c55e] hover:!bg-[#16a34a] hover:!border-[#16a34a]"
-            @click="scrollTo('contact')"
-            >Get in Touch</a-button
-          >
-          <a-button
-            type="outline"
-            class="rounded-md !p-6 !border-[#22c55e] !text-[#22c55e] !font-bold hover:!text-[#22c55e] hover:!border-[#22c55e]"
-            @click="scrollTo('experience')"
-            >View My Work</a-button
-          >
+          <div class="lang-tags">
+            <span
+              @click="scrollTo('contact')"
+              class="lang-tag fluent p-4 cursor-pointer"
+              >Get in Touch</span
+            >
+            <span
+              @click="scrollTo('experience')"
+              class="lang-tag p-4 cursor-pointer"
+              >View My Work</span
+            >
+          </div>
         </div>
       </div>
       <div class="scroll-indicator">
@@ -847,6 +847,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import profileImage from "../assets/pic_sokny.jpg";
+
+const theme = ref("dark");
 
 const projectsOpen = ref({
   parking: false,
