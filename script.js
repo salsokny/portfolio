@@ -1,5 +1,5 @@
 /**
- * Sochetra Oeun - Portfolio
+ * Sal Sokny - Portfolio
  * Interactive behaviors and animations
  */
 
