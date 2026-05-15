@@ -829,7 +829,7 @@
               <span>096 680 5742</span>
             </a>
             <a
-              href="https://linkedin.com/in/salsokny"
+              href="https://linkedin.com/in/sal-sokny-187b9b228/"
               target="_blank"
               rel="noopener"
               class="contact-link"
