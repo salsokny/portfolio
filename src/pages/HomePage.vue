@@ -868,6 +868,11 @@ const skills = [
   { name: "Nuxt.js", level: 85, label: "Good" },
   { name: "GitHub", level: 85, label: "Good" },
   { name: "AI Tools", level: 85, label: "Good" },
+  { name: "Java", level: 65, label: "Medium" },
+  { name: "PHP", level: 50, label: "Medium" },
+  { name: "Laravel", level: 50, label: "Medium" },
+  { name: "MySQL", level: 50, label: "Medium" },
+  { name: "WordPress", level: 60, label: "Medium" },
 ];
 
 const education = [
